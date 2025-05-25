@@ -2,10 +2,10 @@
   "name": "backend-from-zero",
   "version": "1.0.0",
   "description": "backend from zero",
-  "main": "server.js",
+  "main": "server.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/server.js"
+    "start": "nodemon src/server.mjs"
   },
   "repository": {
     "type": "git",
