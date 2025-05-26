@@ -1,20 +1,13 @@
 import express from "express";
 import configViewEngine from "./configs/viewEngine.mjs";
 import webRoutes from "./routes/web.mjs";
-import mysql from "mysql2/promise";
+import connection from "./configs/db.mjs";
+import { config } from "dotenv";
+config();
 
 const app = express(); // tạo app express
 const port = process.env.PORT || 3000;
 const hostname = process.env.HOST_NAME;
-
-// connection
-const connection = await mysql.createConnection({
-  host: "localhost",
-  port: 3308,
-  user: "root",
-  password: "123456",
-  database: "hoidanit",
-});
 
 // A simple SELECT query
 try {
