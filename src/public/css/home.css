@@ -68,3 +68,16 @@ header {
         right: 0;
     }
 }
+
+
+/* form */
+.form-outline-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.form {
+    width: 50%;
+}
