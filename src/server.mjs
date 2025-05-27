@@ -16,5 +16,9 @@ app.listen(port, hostname, () => {
 // config template engine
 configViewEngine(app);
 
+// config req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // routes
 app.use("/", webRoutes); // => tham số "/" sẽ cho biết toàn bộ các routes sẽ đứng sau nó. VD: /test/abc
