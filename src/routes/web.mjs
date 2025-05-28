@@ -3,6 +3,7 @@ import {
   getHomePage,
   postCreateUser,
   createUserForm,
+  getUpdatePage,
 } from "../controllers/homeController.mjs";
 
 const router = express.Router();
@@ -14,5 +15,8 @@ router.get("/", getHomePage);
 // Create user
 router.get("/create", createUserForm);
 router.post("/create-user", postCreateUser);
+
+// edit user
+router.get("/edit-user/:id", getUpdatePage);
 
 export default router;

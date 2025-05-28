@@ -1,8 +1,13 @@
 import connection from "../configs/db.mjs";
+import { getAllUser } from "../services/CRUDservice.mjs";
 
 const getHomePage = async (req, res) => {
-  // A simple SELECT query
-  res.render("home.ejs");
+  try {
+    let results = await getAllUser();
+    res.render("home.ejs", { listUser: results });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // Create user
@@ -25,4 +30,11 @@ const postCreateUser = async (req, res) => {
   }
 };
 
-export { getHomePage, postCreateUser, createUserForm };
+// Edit user
+const getUpdatePage = (req, res) => {
+  const userID = req.params.id;
+
+  res.render("edit-user.ejs");
+};
+
+export { getHomePage, postCreateUser, createUserForm, getUpdatePage };
