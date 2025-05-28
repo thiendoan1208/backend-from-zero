@@ -5,14 +5,24 @@ const getHomePage = async (req, res) => {
   res.render("home.ejs");
 };
 
-const getABC = (req, res) => {
-  res.render("sample.ejs");
-};
-
 // Create user
-const postCreateUser = (req, res) => {
-  console.log(req.body);
-  res.send("Created new user")
+const createUserForm = (req, res) => {
+  res.render("create-user.ejs");
 };
 
-export { getHomePage, getABC, postCreateUser };
+const postCreateUser = async (req, res) => {
+  let { name, email, city } = req.body;
+  // Using placeholders
+  try {
+    await connection.query(
+      `insert into Users 
+      (email, name, city) values (?, ?, ?)`,
+      [email, name, city]
+    );
+    res.send("Create user success!");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export { getHomePage, postCreateUser, createUserForm };

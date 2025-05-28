@@ -8,38 +8,81 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="css/home.css">
     <title>Home Page</title>
+    <style>
+        .table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: coral;
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <h1 class="logo">LOGO</h1>
         <ul class="nav">
-            <li class="navlink"><a href="#">Home</a></li>
-            <li class="navlink"><a href="#">About</a></li>
-            <li class="navlink"><a href="#">Projects</a></li>
-            <li class="navlink"><a href="#">Contact</a></li>
+            <li class="navlink"><a href="/">Home</a></li>
+            <li class="navlink"><a href="/create">Create User</a></li>
         </ul>
         <div class="burger">
             <i class="fas fa-bars"></i>
         </div>
     </header>
     <main>
-        <div class="form-outline-box">
-            <form class="form" action="/create-user" method="post">
-                <fieldset>
-                    <legend>Personalia:</legend>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name"><br><br>
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email"><br><br>
-
-                    <label for="city">City:</label>
-                    <input type="text" id="city" name="city"><br><br>
-                    
-                    <input type="submit" value="Submit">
-                </fieldset>
-            </form>
+        <div style="margin: 0 10px;">
+            <div>
+                <h1>User List</h1>
+            </div>
+            <div>
+                <span class="counter pull-right"></span>
+                <table class="table table-hover table-bordered results">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th class="col-md-5 col-xs-5">Name / Surname</th>
+                            <th class="col-md-4 col-xs-4">Email</th>
+                            <th class="col-md-3 col-xs-3">City</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Vatanay Özbeyli</td>
+                            <td>UI & UX</td>
+                            <td>Istanbul</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Burak Özkan</td>
+                            <td>Software Developer</td>
+                            <td>Istanbul</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Egemen Özbeyli</td>
+                            <td>Purchasing</td>
+                            <td>Kocaeli</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>Engin </td>
+                            <td>Sales</td>
+                            <td>Bozuyük</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
 </body>
