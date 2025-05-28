@@ -4,6 +4,8 @@ import {
   postCreateUser,
   createUserForm,
   getUpdatePage,
+  updateUser,
+  deleteUser,
 } from "../controllers/homeController.mjs";
 
 const router = express.Router();
@@ -18,5 +20,9 @@ router.post("/create-user", postCreateUser);
 
 // edit user
 router.get("/edit-user/:id", getUpdatePage);
+router.post("/update-user", updateUser);
+
+// delete user
+router.post("/delete-user", deleteUser);
 
 export default router;

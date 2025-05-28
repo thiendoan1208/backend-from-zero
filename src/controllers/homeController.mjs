@@ -1,5 +1,9 @@
 import connection from "../configs/db.mjs";
-import { getAllUser } from "../services/CRUDservice.mjs";
+import {
+  getAllUser,
+  getUser,
+  updateUserByID,
+} from "../services/CRUDservice.mjs";
 
 const getHomePage = async (req, res) => {
   try {
@@ -31,10 +35,31 @@ const postCreateUser = async (req, res) => {
 };
 
 // Edit user
-const getUpdatePage = (req, res) => {
+const getUpdatePage = async (req, res) => {
   const userID = req.params.id;
+  const results = await getUser(userID);
 
-  res.render("edit-user.ejs");
+  res.render("edit-user.ejs", { user: results });
 };
 
-export { getHomePage, postCreateUser, createUserForm, getUpdatePage };
+const updateUser = async (req, res) => {
+  try {
+    let { id, name, email, city } = req.body;
+    await updateUserByID(id, name, email, city);
+    res.redirect("/");
+  } catch (error) {}
+};
+
+// Delete user
+const deleteUser = async (req, res) => {
+  res.send("delete");
+};
+
+export {
+  getHomePage,
+  postCreateUser,
+  createUserForm,
+  getUpdatePage,
+  updateUser,
+  deleteUser,
+};

@@ -77,7 +77,9 @@
                                         <a style="text-decoration: none; color: black;" rel="stylesheet"
                                             href="/edit-user/<%= user.id %>">Edit</a>
                                     </button>
-                                    <button>Delete</button>
+                                    <form action="/delete-user" method="post">
+                                        <button>Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                             <% }); %>
