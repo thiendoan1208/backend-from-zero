@@ -1,5 +1,6 @@
 import connection from "../configs/db.mjs";
 import {
+  deleteUserById,
   getAllUser,
   getUser,
   updateUserByID,
@@ -28,7 +29,7 @@ const postCreateUser = async (req, res) => {
       (email, name, city) values (?, ?, ?)`,
       [email, name, city]
     );
-    res.send("Create user success!");
+    res.redirect("/");
   } catch (err) {
     console.log(err);
   }
@@ -52,7 +53,19 @@ const updateUser = async (req, res) => {
 
 // Delete user
 const deleteUser = async (req, res) => {
-  res.send("delete");
+  const userID = req.params.id;
+  const results = await getUser(userID);
+  res.render("user-delete.ejs", { user: results });
+};
+
+const confirmDeleteUser = async (req, res) => {
+  const userID = req.body.id;
+  try {
+    await deleteUserById(userID);
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export {
@@ -62,4 +75,5 @@ export {
   getUpdatePage,
   updateUser,
   deleteUser,
+  confirmDeleteUser,
 };

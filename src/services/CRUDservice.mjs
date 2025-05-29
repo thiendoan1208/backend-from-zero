@@ -41,4 +41,9 @@ const updateUserByID = async (id, name, email, city) => {
   }
 };
 
-export { getAllUser, getUser, updateUserByID };
+// delete user
+
+const deleteUserById = async (userID) => {
+  await connection.query(`delete from Users where id = ? ;`, [userID]);
+};
+export { getAllUser, getUser, updateUserByID, deleteUserById };
